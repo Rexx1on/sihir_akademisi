@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sihir Akademisi</title>
+    <!-- Mistik bir font çekiyoruz -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- YENİ BİLGİ: Position: Fixed ile ekranı kaydırsak bile üstte sabit kalan menü -->
+    <header class="sabit-menu">
+        <h1>Arcanum Akademisi</h1>
+        <nav>
+            <a href="#">Bölümler</a>
+            <a href="#">Kütüphane</a>
+            <a href="#">Kayıt Ol</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="giris-alani">
+            <h2>İçindeki Büyüyü Uyandır</h2>
+            <p>Sıradan dünyayı geride bırak. Binlerce yıllık sırlar seni bekliyor.</p>
+        </section>
+
+        <!-- YENİ BİLGİ: CSS Grid kullanacağımız asimetrik bölüm -->
+        <section class="kategori-grid">
+            
+            <!-- KART 1: Geniş Kart -->
+            <article class="buyu-karti genis-kart">
+                <img src="gorseller/sato.jpg" alt="Akademi Şatosu">
+                <div class="karti-karart"></div>
+                <div class="kart-yazisi">
+                    <h3>Ana Kampüs</h3>
+                    <p>Uçuş dersleri ve büyük salon etkinlikleri.</p>
+                </div>
+            </article>
+
+            <!-- KART 2: Rozetli Kart -->
+            <article class="buyu-karti">
+                <!-- Position testleri için ROZET ekliyoruz -->
+                <span class="rozet yeni">YENİ</span>
+                <img src="gorseller/buyucu.jpg" alt="Karanlık Sanatlar">
+                <div class="karti-karart"></div>
+                <div class="kart-yazisi">
+                    <h3>Karanlık Sanatlar</h3>
+                    <p>Kendini korumayı öğren.</p>
+                </div>
+            </article>
+
+            <!-- KART 3 -->
+            <article class="buyu-karti">
+                <span class="rozet tehlike">DİKKAT</span>
+                <img src="gorseller/ejderha.jpg" alt="Sihirli Yaratıklar">
+                <div class="karti-karart"></div>
+                <div class="kart-yazisi">
+                    <h3>Yaratık Bakımı</h3>
+                    <p>Ejderhalara fısıldayanlar aranıyor.</p>
+                </div>
+            </article>
+
+            <!-- KART 4: Uzun Kart -->
+            <article class="buyu-karti uzun-kart">
+                <img src="gorseller/iksir.jpg" alt="İksir Dersi">
+                <div class="karti-karart"></div>
+                <div class="kart-yazisi">
+                    <h3>İksir Yapımı</h3>
+                    <p>Şişelenmiş şöhret, kaynatılmış ihtişam.</p>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+body {
+    background-color: #1a1a24; /* Koyu lacivert/gri */
+    color: #e0e0e0;
+    font-family: 'Lora', serif; /* Metinler için okunaklı, tırnaklı font */
+    margin: 0;
+    padding: 0;
+    /* Sayfanın üstüne, sabit menü yüksekliği kadar boşluk veriyoruz ki menü içeriği ezmesin! */
+    padding-top: 80px; 
+}
+
+h1, h2, h3, .rozet {
+    font-family: 'Cinzel', serif; /* Başlıklar için mistik/tarihi font */
+}
+
+/* =========================================
+   2. SABİT MENÜ (POSITION: FIXED)
+   ========================================= */
+.sabit-menu {
+    position: fixed; /* Ekran kaydırılsa bile hep belirtilen yerde (üstte) sabit kalır */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(15, 15, 20, 0.95); /* Hafif saydam siyah */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    z-index: 1000; /* Menünün her zaman en üst katmanda görünmesini sağlar! */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+}
+
+.sabit-menu h1 {
+    color: #d4af37; /* Altın rengi */
+    font-size: 24px;
+}
+
+.sabit-menu a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.sabit-menu a:hover {
+    color: #d4af37;
+}
+
+/* =========================================
+   3. GİRİŞ ALANI (Hero Section)
+   ========================================= */
+.giris-alani {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.giris-alani h2 {
+    font-size: 40px;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   4. CSS GRID İLE ASİMETRİK IZGARA!
+   ========================================= */
+.kategori-grid {
+    display: grid; /* Flexbox değil, Grid kullanıyoruz! */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Harika bir Responsive kodudur. Kutular en az 250px olur, yer varsa eşit dağılır. */
+    gap: 20px;
+    padding: 20px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* CSS Grid'e özel: Bazı kutuları daha büyük yapalım */
+@media (min-width: 768px) {
+    .genis-kart {
+        grid-column: span 2; /* Bu kart 2 kolonluk yer kaplasın */
+    }
+    .uzun-kart {
+        grid-row: span 2; /* Bu kart 2 satırlık yer kaplasın */
+    }
+}
+
+/* =========================================
+   5. KART İÇİ KONUMLANDIRMA (POSITION: RELATIVE & ABSOLUTE)
+   ========================================= */
+.buyu-karti {
+    position: relative; /* ÇOK ÖNEMLİ: İçindeki 'absolute' elemanların bu kutunun sınırlarından çıkmasını engeller! Zindan görevi görür. */
+    border-radius: 10px;
+    overflow: hidden;
+    height: 300px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+.buyu-karti img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s, filter 0.5s; /* Geçiş efektleri */
+    filter: grayscale(80%) sepia(20%); /* Resimleri eski, renksiz ve büyülü gösterir! */
+}
+
+/* KARTIN ÜZERİNE GELİNCE... */
+.buyu-karti:hover img {
+    transform: scale(1.1); /* Resim hafifçe büyüsün */
+    filter: grayscale(0%) sepia(0%); /* Renkler canlansın! */
+}
+
+/* =========================================
+   6. YAZILARI VE KARARTMAYI RESMİN ÜZERİNE BİNDİRME
+   ========================================= */
+/* Resmin üzerine hafif siyah bir tül perde çekiyoruz ki beyaz yazılar okunsun */
+.karti-karart {
+    position: absolute; /* .buyu-karti'na (Zindana) göre serbest hareket eder */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 100%);
+}
+
+/* Yazıları kartın en altına oturtuyoruz */
+.kart-yazisi {
+    position: absolute;
+    bottom: -30px; /* Başlangıçta biraz aşağıda saklı dursun */
+    left: 0;
+    padding: 20px;
+    color: white;
+    width: 100%;
+    transition: bottom 0.4s; /* Fare üzerine gelince yukarı kayacak */
+}
+
+.buyu-karti:hover .kart-yazisi {
+    bottom: 0; /* Fare üzerine gelince asıl yerine çıksın */
+}
+
+.kart-yazisi h3 {
+    color: #d4af37;
+    margin: 0 0 5px 0;
+    font-size: 22px;
+}
+
+.kart-yazisi p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* =========================================
+   7. ROZETLER (POSITION: ABSOLUTE UYGULAMASI 2)
+   ========================================= */
+.rozet {
+    position: absolute; /* Zindanın (Kartın) içinde serbest dolaşır */
+    top: 15px; /* Kartın tavanından 15px aşağıda */
+    right: 15px; /* Kartın sağ duvarından 15px solda */
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    z-index: 10; /* Karartma (tül) perdesinin ALTINDA KALMAMASI için (Z-ekseninde öne alır) */
+}
+
+.rozet.yeni { background-color: #27ae60; }
+.rozet.tehlike { background-color: #c0392b; }
